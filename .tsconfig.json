@@ -15,28 +15,27 @@
         "esModuleInterop": true,
         "skipLibCheck": true,
         "forceConsistentCasingInFileNames": true,
-        "baseUrl": "..",
+        "baseUrl": ".",
         "allowJs": true,
         "checkJs": true,
         "paths": {
-            "$components": [
+            "@components": [
                 "src/components/*"
             ],
-            "$lib/*": [
-                "src/lib/*"
+            "@libs/*": [
+                "src/libs/*"
             ]
         },
         "rootDirs": [
-            "..",
+            ".",
             "./types"
         ]
     },
     "include": [
-        "../src/**/*.js",
-        "../src/**/*.ts",
+        "src/**/*.js",
+        "src/**/*.ts"
     ],
     "exclude": [
-        "../node_modules/**",
-        "./**"
+        "node_modules/**"
     ]
 }

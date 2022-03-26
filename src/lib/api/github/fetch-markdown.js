@@ -4,7 +4,7 @@ import path from 'path';
 
 export const getContent = async (slug) => {
   try {
-    const string = fs.readFileSync(path.resolve(process.cwd(), slug), 'utf8');
+    const string = fs.readFileSync(path.resolve(process.cwd(), `${slug}`), 'utf8');
     // console.log(`markdownString: ${string}`);
     const json = matter(string)
     // const { data, content: json } = matter.read(path.resolve(process.cwd(), 'test.md'))
