@@ -1,12 +1,14 @@
 import { loadFile } from '@lib/api/file/fetch-markdown';
-import { getMarkdownPaths } from '@lib/api/github/fetch-markdown';
+import React from 'react';
 
 // Publish Github Issues as Statuc Site Pages with raw Markdown text
 
-const Issues = ({ posts }) => {
-  console.log(`mdString 222: ${posts}`);
+const Issues = ({ mdString }) => {
+
   return (
-    <pre style={{ "wordWrap": "break-word", "whiteSpace": "pre-wrap" }}>{posts}</pre>
+    <>
+      <pre id="markdown" style={{ "wordWrap": "break-word", "whiteSpace": "pre-wrap" }}>{mdString}</pre>
+    </>
   )
 }
 
@@ -35,9 +37,10 @@ export async function getStaticPaths() {
   // const res = await fetch('https://.../posts')
   // const posts = await res.json()
 
-  const issues = await getMarkdownPaths()
+  // const issues = await getIssues(domain);
+  // const issues = await getMarkdownPaths()
 
-
+  const issues = ['markdown.md']
   // Get the paths we want to pre-render based on posts
   const paths = issues.map((issue) => ({
     params: { slug: issue },
