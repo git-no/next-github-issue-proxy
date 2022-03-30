@@ -6,7 +6,7 @@ import React from 'react';
 const Issues = ({ posts }) => {
   return (
     <>
-      <pre id="markdown" style={{ "wordWrap": "break-word", "whiteSpace": "pre-wrap" }}>{posts}</pre>
+      <pre id="markdown" style={{ "wordWrap": "break-word", "whiteSpace": "pre-wrap" }}>{JSON.stringify(posts, null, 2)}</pre>
     </>
   )
 }
