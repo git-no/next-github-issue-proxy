@@ -1,6 +1,9 @@
 const { Octokit } = require("@octokit/rest");
 
-export const fetchIssues = async () => {
+/**
+ * @param {number} issueNumber
+ */
+export const fetchComments = async (issueNumber) => {
   try {
     const authToken = process.env.GIT_AUTH_TOK
     const octokit = new Octokit({
@@ -14,14 +17,11 @@ export const fetchIssues = async () => {
     // https://octokit.github.io/rest.js/v18#issues-list-for-repo
     // const url = `/${owner}/${repo}/issues`
     // const issues = await octokit.request(url);
-    const { data: issues } = await octokit.rest.issues.listForRepo({
+    // const { data } = await octokit.rest.issues.listComments({
+    const { data } = await octokit.rest.issues.listCommentsForRepo({
       owner,
-      repo,
+      repo
     });
-
-    const data = issues?.map(issue => {
-      return { number: issue.number, url: issue.url, title: issue.title, body: issue.body, updated_at: issue.updated_at }
-    })
 
     return data
   } catch (error) {

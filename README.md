@@ -33,3 +33,10 @@ https://github.com/vercel/next.js/discussions/12835
 
 Vercel Example On-Demand-ISR
 https://on-demand-isr.vercel.app
+
+
+---
+
+## Todo
+
+- GetStaticPath mit leerem Ergebnis

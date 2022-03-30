@@ -15,12 +15,14 @@ export default async (req, res) => {
     // https://octokit.github.io/rest.js/v18#issues-list-for-repo
     // const url = `/${owner}/${repo}/issues`
     // const issues = await octokit.request(url);
-    const issues = await octokit.rest.issues.listForRepo({
+    const { data: issues, status } = await octokit.rest.issues.listForRepo({
       owner,
       repo,
     });
 
-    const data = issues.map(issue => { return { number: issue.number, url: issue.url, title: issue.title, body: issue.body, updated_at: issue.updated_at } })
+    const data = issues?.map(issue => {
+      return { number: issue.number, url: issue.url, title: issue.title, body: issue.body, updated_at: issue.updated_at }
+    })
     // console.log(`Issues: ${JSON.stringify(issues, null, 4)}`);
 
     return res.status(200).json(data)
