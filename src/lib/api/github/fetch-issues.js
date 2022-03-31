@@ -2,14 +2,14 @@ const { Octokit } = require("@octokit/rest");
 
 export const fetchIssues = async () => {
   try {
-    const authToken = process.env.GIT_AUTH_TOK
+    const authToken = process.env.GITHUB_AUTH_TOK
     const octokit = new Octokit({
       auth: authToken
     });
 
-    const owner = process.env.GIT_USER_NAME;
-    const repo = process.env.GIT_REPO_NAME
-    const content = process.env.GIT_LABL_CONTENT
+    const owner = process.env.GITHUB_USER_NAME;
+    const repo = process.env.GITHUB_REPO_NAME
+    const content = process.env.GITHUB_LABL_CONTENT
 
     // octokit.request
     // https://octokit.github.io/rest.js/v18#issues-list-for-repo

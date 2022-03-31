@@ -1,6 +1,5 @@
-import { fetchIssues } from '@lib/api/github/fetch-issues';
+import { fetchGitHub, readAccessToken } from '@lib/api/github';
 import React from 'react';
-
 // Publish Github Issues as Statuc Site Pages with raw Markdown text
 
 const Issues = ({ posts }) => {
@@ -21,11 +20,16 @@ export async function getStaticProps(context) {
   // console.log(`mdString: ${mdString}`);
   // // data = JSON.stringify(json)
 
-  const posts = await fetchIssues()
+  // const posts = await fetchIssues()  // vormals funktioniert
+  const accessToken = await readAccessToken();
+  const issues = await getIssues(accessToken);
+
+  console.log('[Next.js] Running getStaticProps for /');
+  console.log(`[Next.js] Issues: ${issues.length}`);
 
   return {
     props: {
-      posts
+      posts: issues
     },
     // Next.js will attempt to re-generate the page:
     // - When a request comes in
@@ -53,4 +57,11 @@ export async function getStaticProps(context) {
 //   return { paths, fallback: false }
 // }
 
+/**
+ * @param {string} token
+ * @returns {Promise<Object>} 
+ */
+function getIssues(token) {
+  return fetchGitHub(`/repos/${process.env.GITHUB_USER_NAME}/${process.env.GITHUB_REPO_NAME}/issues`, token);
+}
 export default Issues

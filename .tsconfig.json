@@ -22,8 +22,8 @@
             "@components": [
                 "src/components/*"
             ],
-            "@libs/*": [
-                "src/libs/*"
+            "@lib/*": [
+                "src/lib/*"
             ]
         },
         "rootDirs": [

@@ -39,4 +39,8 @@ https://on-demand-isr.vercel.app
 
 ## Todo
 
+- Description on readme
+- Arguemten
 - GetStaticPath mit leerem Ergebnis
+- Einrichtung (fork, deploy vercel, define envs, github hook config (point to domain)...)
+- beispiel nextjs https://github.com/leerob/on-demand-isr
